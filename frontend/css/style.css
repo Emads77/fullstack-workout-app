@@ -1,0 +1,1086 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Red+Hat+Display:wght@400;700;900&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+    --header-height: 10rem;
+
+    /*========== Colors ==========*/
+    /*Color mode HSL(hue, saturation, lightness)*/
+    --first-color: hsl(79, 72%, 55%);
+    --first-color-light: hsl(79, 97%, 77%);
+    --first-color-alt: hsl(79, 97%, 40%);
+    --first-color-dark: hsl(79, 63%, 50%);
+    --first-color-gray: hsl(79, 6%, 64%);
+    --title-color: hsl(180, 4%, 98%);
+    --title-color-black: hsl(180, 4%, 12%);
+    --text-color: hsl(180, 4%, 72%);
+    --text-color-light: hsl(180, 4%, 65%);
+    --body-color: hsl(60, 50%, 20%);
+
+    /*========== Font and typography ==========*/
+    /*.5rem = 8px | 1rem = 16px ...*/
+    --body-font: 'Red Hat Display', sans-serif;
+    --second-font: 'Kaushan Script', cursive;
+    --biggest-font-size: 2rem;
+    --bigger-font-size: 1.5rem;
+    --big-font-size: 1.25rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1rem;
+    --normal-font-size: .938rem;
+    --small-font-size: .813rem;
+    --smaller-font-size: .75rem;
+
+    /*========== Font weight ==========*/
+    --font-bold: 700;
+    --font-black: 900;
+
+    /*========== z index ==========*/
+    --z-tooltip: 10;
+    --z-fixed: 100;
+}
+
+/* Responsive typography */
+@media screen and (min-width: 1024px) {
+    :root {
+        --biggest-font-size: 6rem;
+        --bigger-font-size: 3.5rem;
+        --big-font-size: 2.75rem;
+        --h1-font-size: 2.25rem;
+        --h2-font-size: 1.5rem;
+        --h3-font-size: 1.25rem;
+        --normal-font-size: 1rem;
+        --small-font-size: .875rem;
+        --smaller-font-size: .813rem;
+    }
+}
+
+/*=============== BASE ===============*/
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body,
+button,
+input {
+    font-family: var(--body-font), serif;
+    font-size: var(--normal-font-size);
+}
+
+body {
+    background-color: var(--body-color);
+    color: var(--text-color);
+}
+
+h1, h2, h3 {
+    color: var(--title-color);
+    font-weight: var(--font-bold);
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+    max-width: 1124rem;
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+}
+
+.section {
+    padding: 2rem 0 2rem; /* Adjust the top padding to reduce space */
+}
+
+.section__data {
+    display: flex;
+    flex-direction: column;
+    row-gap: .75rem;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section__title,
+.section__title-border {
+    font-size: var(--big-font-size);
+    letter-spacing: 2px;
+}
+
+.section__subtitle {
+    font-size: var(--h2-font-size);
+    font-family: var(--second-font), serif;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: var(--first-color);
+    transform: rotate(-2deg);
+}
+
+.section__titles {
+    display: flex;
+    column-gap: .75rem;
+    justify-content: center;
+}
+
+.section__title-border {
+    -webkit-text-stroke: 1px var(--text-color);
+    color: transparent;
+}
+
+.grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.main {
+    padding-top: 1rem; /* Adjust this value to reduce space */
+    overflow: hidden; /* For animation ScrollReveal */
+}
+
+.color-red {
+    color: hsl(0, 80%, 64%);
+}
+
+.color-green {
+    color: var(--first-color);
+}
+
+
+/*=============== HEADER & NAVIGATION ===============*/
+.header {
+    background-color: #0c0c0c;
+    width: 100%;
+    height: 80px; /* Adjust the height if necessary */
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensure it's above other content */
+    transition: background .3s;
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem; /* Adjust padding if necessary */
+}
+
+.nav {
+    height: 100%; /* Ensure nav takes full height of header */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+}
+
+.nav__logo {
+    align-self: flex-start;
+    margin-right: 50rem;
+}
+
+.nav__logo img {
+    width: 5rem;
+    height: 5rem;
+    align-items: flex-start;
+}
+
+.nav__toggle {
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+.nav__list {
+    display: flex;
+    gap: 2.5rem; /* Adds space between list items */
+    margin-left: auto;
+}
+
+.nav__link {
+    color: var(--title-color);
+    transition: color .3s;
+}
+
+.nav__link:hover {
+    color: var(--first-color);
+}
+
+.nav__close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    color: var(--title-color);
+    cursor: pointer;
+}
+
+/* Other styles for sections, animations, etc. */
+
+.section {
+    padding: 2rem 0 2rem; /* Adjust the top padding to reduce space */
+}
+
+.section__data {
+    display: flex;
+    flex-direction: column;
+    row-gap: .75rem;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section__title,
+.section__title-border {
+    font-size: var(--big-font-size);
+    letter-spacing: 2px;
+}
+
+.section__subtitle {
+    font-size: var(--h2-font-size);
+    font-family: var(--second-font), serif;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: var(--first-color);
+    transform: rotate(-2deg);
+}
+
+.section__titles {
+    display: flex;
+    column-gap: .75rem;
+    justify-content: center;
+}
+
+.section__title-border {
+    -webkit-text-stroke: 1px var(--text-color);
+    color: transparent;
+}
+
+.grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.color-red {
+    color: hsl(0, 80%, 64%);
+}
+
+.color-green {
+    color: var(--first-color);
+}
+
+/* Other section-specific styles */
+
+.show-menu {
+    right: 0;
+}
+
+.bg-header {
+    background-color: var(--body-color);
+    box-shadow: 0 4px 8px hsla(180, 12%, 4%, .3);
+}
+
+/*=============== HOME ===============*/
+.home {
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.home__container {
+    padding-top: 4rem;
+    row-gap: 3rem;
+}
+
+.home__data {
+    text-align: center;
+}
+
+.home__subtitle {
+    font-size: var(--bigger-font-size);
+    -webkit-text-stroke: 1px var(--title-color);
+    color: transparent;
+}
+
+.home__title {
+    font-size: var(--biggest-font-size);
+    font-weight: var(--font-black);
+    margin: .5rem 0;
+}
+
+.home__subtitle,
+.home__title {
+    letter-spacing: 2px;
+}
+
+.home__description {
+    margin-bottom: 2.5rem;
+}
+
+.home__triangle {
+    height: 325px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    clip-path: polygon(100% 0, 0 100%, 100% 100%);
+}
+
+.home__triangle-1 {
+    width: 105px;
+    background-color: var(--first-color);
+}
+
+.home__triangle-2 {
+    width: 205px;
+    background-color: var(--first-color-alt);
+}
+
+.home__triangle-3 {
+    width: 305px;
+    background-color: var(--first-color-dark);
+}
+
+.home__imag {
+    display: block;
+    position: relative;
+    z-index: 1;
+    width: 500px;
+    margin: 0 auto;
+}
+
+.photos-container {
+    display: flex;
+    justify-content: space-between; /* Adjust spacing between items */
+}
+
+.photo {
+    width: 400px; /* Adjust width as needed */
+    height: auto; /* Adjust height as needed */
+    margin-right: 100px; /* Adjust spacing between photos */
+}
+
+.photo:last-child {
+    margin-right: 0; /* Remove margin from last photo to avoid extra spacing */
+}
+
+/*=============== BUTTON ===============*/
+.button {
+    display: inline-block;
+    background-color: var(--first-color);
+    padding: 18px 32px;
+    border: 2px solid var(--first-color-light);
+    color: var(--title-color-black);
+    font-weight: var(--font-bold);
+    cursor: pointer;
+    transition: background .3s;
+}
+
+.button:hover {
+    background-color: var(--first-color-alt);
+}
+
+/*=============== exercises ===============*/
+/* Additional or updated styles for exercises.html */
+
+.ex__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 0; /* Remove top margin to position immediately below header */
+    background: linear-gradient(to right, #f7f7f7, #e0e0e0); /* Similar background gradient */
+    padding: 2rem 1rem; /* Padding for spacing */
+    width: 100%;
+}
+
+.ex__title {
+    font-size: 2rem; /* Adjust as necessary */
+    margin-bottom: 2rem; /* Space between the title and the exercise list */
+    color: #333; /* Text color similar to the example site */
+}
+
+.exercise__list {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1000px; /* Adjust max-width as necessary */
+    padding: 0 2rem; /* Ensure the list items have some padding */
+}
+
+.exercise__list li {
+    flex: 1;
+    font-size: 1.5rem; /* Adjust as necessary */
+    font-weight: bold;
+    text-align: center; /* Center-align the text in each list item */
+    margin: 0 1rem; /* Add margin to separate the list items */
+    font-family: var(--body-font); /* Ensure consistent font family */
+}
+
+/* Specific alignment and color for each exercise category */
+.ex__biceps h2 {
+    color: green; /* Color for Biceps title */
+}
+
+.ex__triceps h2 {
+    color: green; /* Color for Triceps title */
+}
+
+.ex__chest h2 {
+    color: green; /* Color for Chest title */
+}
+
+.ex__back h2 {
+    color: green; /* Color for Back title */
+}
+
+/* Style for nested lists */
+.exercise__list li ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+    margin-top: 1rem;
+    text-align: left; /* Align text to the left for sub-lists */
+}
+
+.exercise__list li ul li {
+    font-size: 1rem; /* Smaller font size for nested items */
+    font-weight: normal;
+    margin-bottom: 0.5rem;
+    color: black; /* Color for exercise items */
+}
+
+
+/*=============== EXERCISE BICEPS ===============*/
+.ex__biceps_wrapper {
+    padding: 2rem 1rem;
+    background: linear-gradient(to right, #f7f7f7, #e0e0e0);
+}
+
+.biceps_title_bar {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.biceps_theme_canvas {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.biceps_title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.biceps_title_subtitle {
+    font-size: 1.25rem;
+    color: #666;
+}
+
+/* Exercise Container */
+.ex__container_biceps {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.ex__item_biceps {
+    text-align: left;
+    width: 100%;
+    max-width: 800px; /* Adjust max-width as necessary */
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: #fff; /* Background color for exercise items */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    display: flex;
+    justify-content: space-between; /* Space between text and image */
+    align-items: center; /* Align items vertically */
+}
+
+.ex__content_biceps {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.ex__text_biceps {
+    flex: 1;
+}
+
+.ex__image_biceps {
+    flex-shrink: 0;
+    margin-left: 1rem;
+}
+
+.ex__image_biceps img {
+    max-width: 150px; /* Adjust as necessary */
+    border-radius: 8px; /* Match the border-radius of the container */
+}
+
+.ex__item_title_biceps {
+    font-size: 1.75rem;
+    color: green;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.ex__description_biceps,
+.ex__steps_biceps {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.ex__steps_biceps {
+    padding-left: 1.5rem; /* Indent the list items */
+    list-style-type: disc; /* Display bullet points */
+}
+
+.ex__steps_biceps li {
+    margin-bottom: 0.5rem; /* Space between steps */
+}
+
+.add-to-workout-button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block; /* Ensure it's treated as inline-block */
+    margin-left: 16rem; /* Add some margin to the top if needed */
+}
+
+.add-to-workout-button:hover {
+    background-color: darkgreen;
+}
+
+.workout-plan__container {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+}
+
+.workout-plan__container h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.workout-plan {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#no-workout-message {
+    text-align: center;
+    color: #666;
+}
+
+.workout-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f9f9f9;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.workout-item__details {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.workout-item__details select,
+.workout-item__sets,
+.workout-item__reps {
+    padding: 0.25rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.workout-item__sets,
+.workout-item__reps {
+    width: 3rem;
+    text-align: center;
+}
+
+.workout-item__remove,
+.save-exercise-button,
+.cancel-exercise-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.workout-item__remove:hover,
+.save-exercise-button:hover,
+.cancel-exercise-button:hover {
+    background-color: darkred;
+}
+
+#add-exercise-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+#add-exercise-button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#add-exercise-button:hover {
+    background-color: darkgreen;
+}
+
+/*=============== EXERCISE triceps ===============*/
+
+
+.ex__triceps_wrapper {
+    background: linear-gradient(to right, #f7f7f7, #e0e0e0);
+}
+
+.triceps_title_bar {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.triceps_theme_canvas {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.triceps_title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.triceps_title_subtitle {
+    font-size: 1.25rem;
+    color: #666;
+}
+
+/* Exercise Container */
+.ex__container_triceps {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.ex__item_triceps {
+    text-align: left;
+    width: 100%;
+    max-width: 800px; /* Adjust max-width as necessary */
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: #fff; /* Background color for exercise items */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    display: flex;
+    justify-content: space-between; /* Space between text and image */
+    align-items: center; /* Align items vertically */
+}
+
+.ex__content_triceps {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.ex__text_triceps {
+    flex: 1;
+}
+
+.ex__image_triceps {
+    flex-shrink: 0;
+    margin-left: 1rem;
+}
+
+.ex__image_triceps img {
+    max-width: 150px; /* Adjust as necessary */
+    border-radius: 8px; /* Match the border-radius of the container */
+}
+
+.ex__item_title_triceps {
+    font-size: 1.75rem;
+    color: green;
+    margin-bottom: 0.5rem;
+}
+
+.ex__description_triceps {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.ex__steps_triceps {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.ex__steps_triceps li {
+    margin-bottom: 0.5rem;
+}
+
+/* Button Styles */
+.button-container {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.add-to-workout-button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 16rem; /* Add some margin to the top if needed */
+}
+
+.add-to-workout-button:hover {
+    background-color: darkgreen;
+}
+
+/*=============== EXERCISE CHEST ===============*/
+
+.ex__chest_wrapper {
+    background: linear-gradient(to right, #f7f7f7, #e0e0e0);
+}
+
+.chest_title_bar {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.chest_theme_canvas {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chest_title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.chest_title_subtitle {
+    font-size: 1.25rem;
+    color: #666;
+}
+
+/* Exercise Container */
+.ex__container_chest {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.ex__item_chest {
+    text-align: left;
+    width: 100%;
+    max-width: 800px; /* Adjust max-width as necessary */
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: #fff; /* Background color for exercise items */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    display: flex;
+    justify-content: space-between; /* Space between text and image */
+    align-items: center; /* Align items vertically */
+}
+
+.ex__content_chest {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.ex__text_chest {
+    flex: 1;
+}
+
+.ex__image_chest {
+    flex-shrink: 0;
+    margin-left: 1rem;
+}
+
+.ex__image_chest img {
+    max-width: 150px; /* Adjust as necessary */
+    border-radius: 8px; /* Match the border-radius of the container */
+}
+
+.ex__item_title_chest {
+    font-size: 1.75rem;
+    color: green;
+    margin-bottom: 0.5rem;
+}
+
+.ex__description_chest {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.ex__steps_chest {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.ex__steps_chest li {
+    margin-bottom: 0.5rem;
+}
+
+/* Button Styles */
+.button-container {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.add-to-workout-button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-to-workout-button:hover {
+    background-color: darkgreen;
+}
+
+/*=============== EXERCISE BACK ===============*/
+.ex__back_wrapper {
+    background: linear-gradient(to right, #f7f7f7, #e0e0e0);
+}
+
+.back_title_bar {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.back_theme_canvas {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.back_title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.back_title_subtitle {
+    font-size: 1.25rem;
+    color: #666;
+}
+
+/* Exercise Container */
+.ex__container_back {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.ex__item_back {
+    text-align: left;
+    width: 100%;
+    max-width: 800px; /* Adjust max-width as necessary */
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: #fff; /* Background color for exercise items */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    display: flex;
+    justify-content: space-between; /* Space between text and image */
+    align-items: center; /* Align items vertically */
+}
+
+.ex__content_back {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.ex__text_back {
+    flex: 1;
+}
+
+.ex__image_back {
+    flex-shrink: 0;
+    margin-left: 1rem;
+}
+
+.ex__image_back img {
+    max-width: 150px; /* Adjust as necessary */
+    border-radius: 8px; /* Match the border-radius of the container */
+}
+
+.ex__item_title_back {
+    font-size: 1.75rem;
+    color: green;
+    margin-bottom: 0.5rem;
+}
+
+.ex__description_back {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.ex__steps_back {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.ex__steps_back li {
+    margin-bottom: 0.5rem;
+}
+
+/* Button Styles */
+.button-container {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.add-to-workout-button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-to-workout-button:hover {
+    background-color: darkgreen;
+}
+
+/*=============== CUSTOMIZE YOUR PLAN ===============*/
+.workout-plan__container {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+}
+
+.workout-plan__container h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.workout-plan {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#no-workout-message {
+    text-align: center;
+    color: #666;
+}
+
+.workout-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f9f9f9;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.workout-item__details {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.workout-item__details select,
+.workout-item__sets,
+.workout-item__reps {
+    padding: 0.25rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.workout-item__sets,
+.workout-item__reps {
+    width: 3rem;
+    text-align: center;
+}
+
+.workout-item__remove,
+.save-exercise-button,
+.cancel-exercise-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.workout-item__remove:hover,
+.save-exercise-button:hover,
+.cancel-exercise-button:hover {
+    background-color: darkred;
+}
+
+#add-exercise-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+#add-exercise-button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#add-exercise-button:hover {
+    background-color: darkgreen;
+}

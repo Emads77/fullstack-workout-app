@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customize Your Plan - Gym Tracker</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="header" id="header">
+    <div class="container">
+        <nav class="nav">
+            <div class="nav__logo">
+                <a href="index.html">
+                    <img src="resources/logo2.jpg" alt="logo">
+                </a>
+            </div>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="index.html" class="nav__link">Home</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="exercises.html" class="nav__link">Exercises</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="customize.html" class="nav__link">Customise Your Plan</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="plans.html" class="nav__link">Plans For You</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main class="main">
+    <section class="customize-plan section">
+        <div class="container">
+            <h1 class="section__title">Customize Your Plan</h1>
+            <form id="workoutPlanForm">
+                <div>
+                    <label for="planName">Plan Name:</label>
+                    <input type="text" id="planName" name="planName" required>
+                </div>
+                <div id="exerciseList" class="exercise__list"></div>
+                <button type="button" id="addExerciseButton">Add Exercise</button>
+                <button type="submit">Save Plan</button>
+            </form>
+        </div>
+    </section>
+</main>
+
+<!-- Hidden dropdown template -->
+<select id="exerciseDropdown" style="display: none;"></select>
+
+<script src="../js/customize.js"></script>
+</body>
+</html>

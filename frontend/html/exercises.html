@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../resources/biceps.png" type="image/png">
+    <title>Exercises - Gym Tracker</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="header" id="header">
+    <div class="container">
+        <nav class="nav">
+            <div class="nav__logo">
+                <a href="index.html">
+                    <img src="../resources/logo2.jpg" alt="logo">
+                </a>
+            </div>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="./index.html" class="nav__link">Home</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="./exercises.html" class="nav__link">Exercises</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="./customize.html" class="nav__link">Customise Your Plan</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="./plans.html" class="nav__link">Plans For You</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main class="main">
+    <section class="exercise-list section">
+        <div class="ex__container">
+            <h1 class="ex__title">Exercise List</h1>
+            <div id="exerciseList" class="exercise__list"></div>
+            <div id="exerciseDetails" class="exercise__details"></div>
+            <div id="ex__container_biceps" class="exercise__container"></div>
+            <div id="ex__container_triceps" class="exercise__container"></div>
+            <div id="ex__container_chest" class="exercise__container"></div>
+            <div id="ex__container_back" class="exercise__container"></div>
+        </div>
+    </section>
+</main>
+
+<script src="../js/exercises.js"></script>
+</body>
+</html>
