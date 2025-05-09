@@ -9,7 +9,7 @@ const __dirname = dirname(__filename);
 console.log('the filename in the dbHelper---->::', __dirname);
 
 console.log('the dirname in the dbHelper::', __dirname);
-// Fix path (assuming database is outside src/)
+
 const dbFile = path.join(__dirname, "../../db/workout.db");
 
 console.log('Resolved DB path:', dbFile);

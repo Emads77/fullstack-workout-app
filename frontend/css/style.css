@@ -1,12 +1,8 @@
-/*=============== GOOGLE FONTS ===============*/
+/*=============== GOOGLE FONTS & VARIABLES ===============*/
 @import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Red+Hat+Display:wght@400;700;900&display=swap");
 
-/*=============== VARIABLES CSS ===============*/
 :root {
-    --header-height: 10rem;
-
-    /*========== Colors ==========*/
-    /*Color mode HSL(hue, saturation, lightness)*/
+    /* Colors */
     --first-color: hsl(79, 72%, 55%);
     --first-color-light: hsl(79, 97%, 77%);
     --first-color-alt: hsl(79, 97%, 40%);
@@ -18,8 +14,7 @@
     --text-color-light: hsl(180, 4%, 65%);
     --body-color: hsl(60, 50%, 20%);
 
-    /*========== Font and typography ==========*/
-    /*.5rem = 8px | 1rem = 16px ...*/
+    /* Fonts */
     --body-font: 'Red Hat Display', sans-serif;
     --second-font: 'Kaushan Script', cursive;
     --biggest-font-size: 2rem;
@@ -31,13 +26,8 @@
     --normal-font-size: .938rem;
     --small-font-size: .813rem;
     --smaller-font-size: .75rem;
-
-    /*========== Font weight ==========*/
     --font-bold: 700;
     --font-black: 900;
-
-    /*========== z index ==========*/
-    --z-tooltip: 10;
     --z-fixed: 100;
 }
 
@@ -51,8 +41,6 @@
         --h2-font-size: 1.5rem;
         --h3-font-size: 1.25rem;
         --normal-font-size: 1rem;
-        --small-font-size: .875rem;
-        --smaller-font-size: .813rem;
     }
 }
 
@@ -67,14 +55,9 @@ html {
     scroll-behavior: smooth;
 }
 
-body,
-button,
-input {
-    font-family: var(--body-font), serif;
-    font-size: var(--normal-font-size);
-}
-
 body {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
     background-color: var(--body-color);
     color: var(--text-color);
 }
@@ -97,49 +80,14 @@ img {
     height: auto;
 }
 
-/*=============== REUSABLE CSS CLASSES ===============*/
+/*=============== LAYOUT & COMMON CLASSES ===============*/
 .container {
     max-width: 1124rem;
-    margin-right: 1.5rem;
-    margin-left: 1.5rem;
+    margin: 0 1.5rem;
 }
 
 .section {
-    padding: 2rem 0 2rem; /* Adjust the top padding to reduce space */
-}
-
-.section__data {
-    display: flex;
-    flex-direction: column;
-    row-gap: .75rem;
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.section__title,
-.section__title-border {
-    font-size: var(--big-font-size);
-    letter-spacing: 2px;
-}
-
-.section__subtitle {
-    font-size: var(--h2-font-size);
-    font-family: var(--second-font), serif;
-    font-weight: 400;
-    letter-spacing: 2px;
-    color: var(--first-color);
-    transform: rotate(-2deg);
-}
-
-.section__titles {
-    display: flex;
-    column-gap: .75rem;
-    justify-content: center;
-}
-
-.section__title-border {
-    -webkit-text-stroke: 1px var(--text-color);
-    color: transparent;
+    padding: 2rem 0;
 }
 
 .grid {
@@ -148,8 +96,8 @@ img {
 }
 
 .main {
-    padding-top: 1rem; /* Adjust this value to reduce space */
-    overflow: hidden; /* For animation ScrollReveal */
+    padding-top: 1rem;
+    overflow: hidden;
 }
 
 .color-red {
@@ -160,23 +108,22 @@ img {
     color: var(--first-color);
 }
 
-
 /*=============== HEADER & NAVIGATION ===============*/
 .header {
     background-color: #0c0c0c;
     width: 100%;
-    height: 80px; /* Adjust the height if necessary */
+    height: 80px;
     position: sticky;
     top: 0;
-    z-index: 1000; /* Ensure it's above other content */
+    z-index: var(--z-fixed);
     transition: background .3s;
     display: flex;
     align-items: center;
-    padding: 0 1.5rem; /* Adjust padding if necessary */
+    padding: 0 1.5rem;
 }
 
 .nav {
-    height: 100%; /* Ensure nav takes full height of header */
+    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -191,17 +138,11 @@ img {
 .nav__logo img {
     width: 5rem;
     height: 5rem;
-    align-items: flex-start;
-}
-
-.nav__toggle {
-    font-size: 1.25rem;
-    cursor: pointer;
 }
 
 .nav__list {
     display: flex;
-    gap: 2.5rem; /* Adds space between list items */
+    gap: 2.5rem;
     margin-left: auto;
 }
 
@@ -212,79 +153,6 @@ img {
 
 .nav__link:hover {
     color: var(--first-color);
-}
-
-.nav__close {
-    position: absolute;
-    top: 1rem;
-    right: 1.5rem;
-    font-size: 1.5rem;
-    color: var(--title-color);
-    cursor: pointer;
-}
-
-/* Other styles for sections, animations, etc. */
-
-.section {
-    padding: 2rem 0 2rem; /* Adjust the top padding to reduce space */
-}
-
-.section__data {
-    display: flex;
-    flex-direction: column;
-    row-gap: .75rem;
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.section__title,
-.section__title-border {
-    font-size: var(--big-font-size);
-    letter-spacing: 2px;
-}
-
-.section__subtitle {
-    font-size: var(--h2-font-size);
-    font-family: var(--second-font), serif;
-    font-weight: 400;
-    letter-spacing: 2px;
-    color: var(--first-color);
-    transform: rotate(-2deg);
-}
-
-.section__titles {
-    display: flex;
-    column-gap: .75rem;
-    justify-content: center;
-}
-
-.section__title-border {
-    -webkit-text-stroke: 1px var(--text-color);
-    color: transparent;
-}
-
-.grid {
-    display: grid;
-    gap: 1.5rem;
-}
-
-.color-red {
-    color: hsl(0, 80%, 64%);
-}
-
-.color-green {
-    color: var(--first-color);
-}
-
-/* Other section-specific styles */
-
-.show-menu {
-    right: 0;
-}
-
-.bg-header {
-    background-color: var(--body-color);
-    box-shadow: 0 4px 8px hsla(180, 12%, 4%, .3);
 }
 
 /*=============== HOME ===============*/
@@ -356,17 +224,17 @@ img {
 
 .photos-container {
     display: flex;
-    justify-content: space-between; /* Adjust spacing between items */
+    justify-content: space-between;
 }
 
 .photo {
-    width: 400px; /* Adjust width as needed */
-    height: auto; /* Adjust height as needed */
-    margin-right: 100px; /* Adjust spacing between photos */
+    width: 400px;
+    height: auto;
+    margin-right: 100px;
 }
 
 .photo:last-child {
-    margin-right: 0; /* Remove margin from last photo to avoid extra spacing */
+    margin-right: 0;
 }
 
 /*=============== BUTTON ===============*/
@@ -385,169 +253,139 @@ img {
     background-color: var(--first-color-alt);
 }
 
-/*=============== exercises ===============*/
-/* Additional or updated styles for exercises.html */
-
+/*=============== EXERCISES PAGE ===============*/
 .ex__container {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-top: 0; /* Remove top margin to position immediately below header */
-    background: linear-gradient(to right, #f7f7f7, #e0e0e0); /* Similar background gradient */
-    padding: 2rem 1rem; /* Padding for spacing */
+    background: linear-gradient(to right, #f7f7f7, #e0e0e0);
+    padding: 2rem 1rem;
     width: 100%;
+    color: #333;
 }
 
 .ex__title {
-    font-size: 2rem; /* Adjust as necessary */
-    margin-bottom: 2rem; /* Space between the title and the exercise list */
-    color: #333; /* Text color similar to the example site */
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+.exercise__filters {
+    display: flex;
+    margin-bottom: 2rem;
+    gap: 1rem;
+    width: 100%;
+    max-width: 800px;
+}
+
+#searchExercise {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#muscleGroupFilter {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-width: 200px;
 }
 
 .exercise__list {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     width: 100%;
-    max-width: 1000px; /* Adjust max-width as necessary */
-    padding: 0 2rem; /* Ensure the list items have some padding */
+    max-width: 800px;
+    margin-bottom: 2rem;
 }
 
-.exercise__list li {
-    flex: 1;
-    font-size: 1.5rem; /* Adjust as necessary */
-    font-weight: bold;
-    text-align: center; /* Center-align the text in each list item */
-    margin: 0 1rem; /* Add margin to separate the list items */
-    font-family: var(--body-font); /* Ensure consistent font family */
+.muscle-group-section {
+    margin-bottom: 2rem;
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Specific alignment and color for each exercise category */
-.ex__biceps h2 {
-    color: green; /* Color for Biceps title */
+.muscle-group-heading {
+    color: green;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 1.75rem;
 }
 
-.ex__triceps h2 {
-    color: green; /* Color for Triceps title */
-}
-
-.ex__chest h2 {
-    color: green; /* Color for Chest title */
-}
-
-.ex__back h2 {
-    color: green; /* Color for Back title */
-}
-
-/* Style for nested lists */
-.exercise__list li ul {
-    list-style-type: none; /* Remove bullet points */
+.exercise-items {
+    list-style: none;
     padding: 0;
-    margin-top: 1rem;
-    text-align: left; /* Align text to the left for sub-lists */
 }
 
-.exercise__list li ul li {
-    font-size: 1rem; /* Smaller font size for nested items */
-    font-weight: normal;
-    margin-bottom: 0.5rem;
-    color: black; /* Color for exercise items */
+.exercise-item {
+    padding: 0.75rem;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-
-/*=============== EXERCISE BICEPS ===============*/
-.ex__biceps_wrapper {
-    padding: 2rem 1rem;
-    background: linear-gradient(to right, #f7f7f7, #e0e0e0);
+.exercise-item:hover {
+    background-color: #f5f5f5;
+    color: var(--first-color-dark);
 }
 
-.biceps_title_bar {
-    text-align: center;
-    margin-bottom: 2rem;
+.exercise-item:last-child {
+    border-bottom: none;
 }
 
-.biceps_theme_canvas {
-    background: #fff;
-    padding: 1rem;
+.exercise__details {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 2rem;
+}
+
+.exercise-detail-card {
+    background: white;
+    padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.biceps_title {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 0.5rem;
-}
-
-.biceps_title_subtitle {
-    font-size: 1.25rem;
-    color: #666;
-}
-
-/* Exercise Container */
-.ex__container_biceps {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.ex__item_biceps {
     text-align: left;
-    width: 100%;
-    max-width: 800px; /* Adjust max-width as necessary */
-    margin-bottom: 2rem;
-    padding: 1rem;
-    background: #fff; /* Background color for exercise items */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    display: flex;
-    justify-content: space-between; /* Space between text and image */
-    align-items: center; /* Align items vertically */
 }
 
-.ex__content_biceps {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.ex__text_biceps {
-    flex: 1;
-}
-
-.ex__image_biceps {
-    flex-shrink: 0;
-    margin-left: 1rem;
-}
-
-.ex__image_biceps img {
-    max-width: 150px; /* Adjust as necessary */
-    border-radius: 8px; /* Match the border-radius of the container */
-}
-
-.ex__item_title_biceps {
-    font-size: 1.75rem;
+.exercise-detail-title {
     color: green;
+    font-size: 2rem;
     margin-bottom: 0.5rem;
     text-align: center;
 }
 
-.ex__description_biceps,
-.ex__steps_biceps {
-    font-size: 1rem;
+.muscle-group-badge {
+    display: inline-block;
+    background-color: #f0f0f0;
     color: #333;
+    padding: 0.25rem 0.75rem;
+    border-radius: 16px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.exercise-detail-description {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.exercise-steps-heading {
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+.exercise-steps-list {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.exercise-step-item {
+    margin-bottom: 0.75rem;
     line-height: 1.5;
-    text-align: left;
-}
-
-.ex__steps_biceps {
-    padding-left: 1.5rem; /* Indent the list items */
-    list-style-type: disc; /* Display bullet points */
-}
-
-.ex__steps_biceps li {
-    margin-bottom: 0.5rem; /* Space between steps */
 }
 
 .add-to-workout-button {
@@ -557,530 +395,515 @@ img {
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    display: inline-block; /* Ensure it's treated as inline-block */
-    margin-left: 16rem; /* Add some margin to the top if needed */
+    display: block;
+    margin: 0 auto;
 }
 
 .add-to-workout-button:hover {
     background-color: darkgreen;
 }
 
-.workout-plan__container {
-    background: #fff;
+.error-message {
+    color: red;
     padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 2rem;
+    background-color: #ffeeee;
+    border-radius: 4px;
+    margin: 1rem 0;
+    text-align: center;
 }
 
-.workout-plan__container h3 {
+.no-results {
     text-align: center;
-    margin-bottom: 1rem;
+    margin: 2rem 0;
+    color: #777;
+}
+
+/*=============== CUSTOMIZE PLAN PAGE ===============*/
+.customize-plan {
+    background: linear-gradient(to right, #f7f7f7, #e0e0e0);
+    padding: 2rem 1rem;
     color: #333;
 }
 
-.workout-plan {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+.customize-plan .container {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-#no-workout-message {
+.section__title {
+    color: #333;
     text-align: center;
-    color: #666;
+    margin-bottom: 2rem;
+    font-size: 2rem;
 }
 
-.workout-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #f9f9f9;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+#workoutPlanForm {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.workout-item__details {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+.form-group {
+    margin-bottom: 1.5rem;
 }
 
-.workout-item__details select,
-.workout-item__sets,
-.workout-item__reps {
-    padding: 0.25rem;
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-.workout-item__sets,
-.workout-item__reps {
-    width: 3rem;
-    text-align: center;
-}
-
-.workout-item__remove,
-.save-exercise-button,
-.cancel-exercise-button {
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 0.25rem 0.5rem;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.workout-item__remove:hover,
-.save-exercise-button:hover,
-.cancel-exercise-button:hover {
-    background-color: darkred;
-}
-
-#add-exercise-container {
+.exercise-row {
     display: flex;
-    justify-content: center;
-    margin-top: 1rem;
-}
-
-#add-exercise-button {
-    background-color: green;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#add-exercise-button:hover {
-    background-color: darkgreen;
-}
-
-/*=============== EXERCISE triceps ===============*/
-
-
-.ex__triceps_wrapper {
-    background: linear-gradient(to right, #f7f7f7, #e0e0e0);
-}
-
-.triceps_title_bar {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.triceps_theme_canvas {
-    background: #fff;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.triceps_title {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 0.5rem;
-}
-
-.triceps_title_subtitle {
-    font-size: 1.25rem;
-    color: #666;
-}
-
-/* Exercise Container */
-.ex__container_triceps {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.ex__item_triceps {
-    text-align: left;
-    width: 100%;
-    max-width: 800px; /* Adjust max-width as necessary */
-    margin-bottom: 2rem;
-    padding: 1rem;
-    background: #fff; /* Background color for exercise items */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    display: flex;
-    justify-content: space-between; /* Space between text and image */
-    align-items: center; /* Align items vertically */
-}
-
-.ex__content_triceps {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.ex__text_triceps {
-    flex: 1;
-}
-
-.ex__image_triceps {
-    flex-shrink: 0;
-    margin-left: 1rem;
-}
-
-.ex__image_triceps img {
-    max-width: 150px; /* Adjust as necessary */
-    border-radius: 8px; /* Match the border-radius of the container */
-}
-
-.ex__item_title_triceps {
-    font-size: 1.75rem;
-    color: green;
-    margin-bottom: 0.5rem;
-}
-
-.ex__description_triceps {
-    font-size: 1rem;
-    color: #333;
-    margin-bottom: 1rem;
-}
-
-.ex__steps_triceps {
-    font-size: 1rem;
-    color: #333;
-    margin-bottom: 1rem;
-}
-
-.ex__steps_triceps li {
-    margin-bottom: 0.5rem;
-}
-
-/* Button Styles */
-.button-container {
-    text-align: center;
-    margin-top: 1rem;
-}
-
-.add-to-workout-button {
-    background-color: green;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: 16rem; /* Add some margin to the top if needed */
-}
-
-.add-to-workout-button:hover {
-    background-color: darkgreen;
-}
-
-/*=============== EXERCISE CHEST ===============*/
-
-.ex__chest_wrapper {
-    background: linear-gradient(to right, #f7f7f7, #e0e0e0);
-}
-
-.chest_title_bar {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.chest_theme_canvas {
-    background: #fff;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.chest_title {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 0.5rem;
-}
-
-.chest_title_subtitle {
-    font-size: 1.25rem;
-    color: #666;
-}
-
-/* Exercise Container */
-.ex__container_chest {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.ex__item_chest {
-    text-align: left;
-    width: 100%;
-    max-width: 800px; /* Adjust max-width as necessary */
-    margin-bottom: 2rem;
-    padding: 1rem;
-    background: #fff; /* Background color for exercise items */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    display: flex;
-    justify-content: space-between; /* Space between text and image */
-    align-items: center; /* Align items vertically */
-}
-
-.ex__content_chest {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.ex__text_chest {
-    flex: 1;
-}
-
-.ex__image_chest {
-    flex-shrink: 0;
-    margin-left: 1rem;
-}
-
-.ex__image_chest img {
-    max-width: 150px; /* Adjust as necessary */
-    border-radius: 8px; /* Match the border-radius of the container */
-}
-
-.ex__item_title_chest {
-    font-size: 1.75rem;
-    color: green;
-    margin-bottom: 0.5rem;
-}
-
-.ex__description_chest {
-    font-size: 1rem;
-    color: #333;
-    margin-bottom: 1rem;
-}
-
-.ex__steps_chest {
-    font-size: 1rem;
-    color: #333;
-    margin-bottom: 1rem;
-}
-
-.ex__steps_chest li {
-    margin-bottom: 0.5rem;
-}
-
-/* Button Styles */
-.button-container {
-    text-align: center;
-    margin-top: 1rem;
-}
-
-.add-to-workout-button {
-    background-color: green;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.add-to-workout-button:hover {
-    background-color: darkgreen;
-}
-
-/*=============== EXERCISE BACK ===============*/
-.ex__back_wrapper {
-    background: linear-gradient(to right, #f7f7f7, #e0e0e0);
-}
-
-.back_title_bar {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.back_theme_canvas {
-    background: #fff;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.back_title {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 0.5rem;
-}
-
-.back_title_subtitle {
-    font-size: 1.25rem;
-    color: #666;
-}
-
-/* Exercise Container */
-.ex__container_back {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.ex__item_back {
-    text-align: left;
-    width: 100%;
-    max-width: 800px; /* Adjust max-width as necessary */
-    margin-bottom: 2rem;
-    padding: 1rem;
-    background: #fff; /* Background color for exercise items */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    display: flex;
-    justify-content: space-between; /* Space between text and image */
-    align-items: center; /* Align items vertically */
-}
-
-.ex__content_back {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.ex__text_back {
-    flex: 1;
-}
-
-.ex__image_back {
-    flex-shrink: 0;
-    margin-left: 1rem;
-}
-
-.ex__image_back img {
-    max-width: 150px; /* Adjust as necessary */
-    border-radius: 8px; /* Match the border-radius of the container */
-}
-
-.ex__item_title_back {
-    font-size: 1.75rem;
-    color: green;
-    margin-bottom: 0.5rem;
-}
-
-.ex__description_back {
-    font-size: 1rem;
-    color: #333;
-    margin-bottom: 1rem;
-}
-
-.ex__steps_back {
-    font-size: 1rem;
-    color: #333;
-    margin-bottom: 1rem;
-}
-
-.ex__steps_back li {
-    margin-bottom: 0.5rem;
-}
-
-/* Button Styles */
-.button-container {
-    text-align: center;
-    margin-top: 1rem;
-}
-
-.add-to-workout-button {
-    background-color: green;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.add-to-workout-button:hover {
-    background-color: darkgreen;
-}
-
-/*=============== CUSTOMIZE YOUR PLAN ===============*/
-.workout-plan__container {
-    background: #fff;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 2rem;
-}
-
-.workout-plan__container h3 {
-    text-align: center;
-    margin-bottom: 1rem;
-    color: #333;
-}
-
-.workout-plan {
-    display: flex;
-    flex-direction: column;
     gap: 1rem;
-}
-
-#no-workout-message {
-    text-align: center;
-    color: #666;
-}
-
-.workout-item {
-    display: flex;
-    justify-content: space-between;
+    margin-bottom: 1rem;
     align-items: center;
-    background: #f9f9f9;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.workout-item__details {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.workout-item__details select,
-.workout-item__sets,
-.workout-item__reps {
-    padding: 0.25rem;
+.exercise-dropdown {
+    flex: 2;
+    padding: 0.75rem;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-.workout-item__sets,
-.workout-item__reps {
-    width: 3rem;
-    text-align: center;
+.sets-input, .reps-input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
-.workout-item__remove,
-.save-exercise-button,
-.cancel-exercise-button {
-    background-color: red;
+.remove-exercise-button {
+    background-color: #ff5555;
     color: white;
     border: none;
-    padding: 0.25rem 0.5rem;
-    border-radius: 5px;
+    padding: 0.75rem;
+    border-radius: 4px;
     cursor: pointer;
 }
 
-.workout-item__remove:hover,
-.save-exercise-button:hover,
-.cancel-exercise-button:hover {
-    background-color: darkred;
+.remove-exercise-button:hover {
+    background-color: #ff3333;
 }
 
-#add-exercise-container {
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}
+
+/*=============== PLANS PAGE ===============*/
+.plans {
+    background: linear-gradient(to right, #f7f7f7, #e0e0e0);
+    padding: 2rem 1rem;
+    color: #333;
+}
+
+.plans .container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.plans__title {
+    color: #333;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.plans__container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.plan-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.plan-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #eee;
+}
+
+.plan-title {
+    color: #333;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.plan-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.delete-plan-button {
+    background-color: #ff5555;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.delete-plan-button:hover {
+    background-color: #ff3333;
+}
+
+.plan-exercises {
+    padding: 1.5rem;
+}
+
+.exercises-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.exercises-table th, .exercises-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.exercises-table th {
+    font-weight: bold;
+    color: #555;
+}
+
+.edit-exercise-button, .remove-exercise-button {
+    background-color: #5555ff;
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 0.5rem;
+}
+
+.edit-exercise-button:hover {
+    background-color: #3333ff;
+}
+
+.remove-exercise-button {
+    background-color: #ff5555;
+}
+
+.remove-exercise-button:hover {
+    background-color: #ff3333;
+}
+
+.no-plans-message, .no-exercises-message {
+    text-align: center;
+    padding: 2rem;
+    color: #777;
+}
+
+.no-plans-message a {
+    color: var(--first-color-dark);
+    text-decoration: underline;
+}
+
+.loading-message {
+    text-align: center;
+    padding: 2rem;
+    color: #555;
+}
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 768px) {
+    .nav__list {
+        gap: 1rem;
+    }
+
+    .home__imag {
+        width: 100%;
+    }
+
+    .photos-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .photo {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    .exercise-row {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .exercises-table th:nth-child(3),
+    .exercises-table td:nth-child(3) {
+        display: none;
+    }
+
+
+
+}
+/* Add Exercise Button - works on all screen sizes */
+.add-exercise-container {
     display: flex;
     justify-content: center;
-    margin-top: 1rem;
+    margin: 1rem 0 2rem;
 }
 
-#add-exercise-button {
-    background-color: green;
+.add-new-exercise-button {
+    background: linear-gradient(to right, var(--first-color), var(--first-color-alt));
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(120, 200, 80, 0.3);
+    transition: all 0.3s ease;
+}
+
+.add-new-exercise-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(120, 200, 80, 0.4);
+}
+
+.button-icon {
+    margin-right: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Modal Styles - for ALL screen sizes */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 3% auto;
+    padding: 2.5rem;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+    color: #333;
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-button:hover {
+    color: #333;
+}
+
+.modal-content h2 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    border-bottom: 2px solid var(--first-color-light);
+    padding-bottom: 0.75rem;
+}
+
+/* Form Styles */
+.modal-content .form-group {
+    margin-bottom: 1.8rem;
+}
+
+.modal-content .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #444;
+    font-size: 1rem;
+}
+
+.modal-content .form-group input,
+.modal-content .form-group select,
+.modal-content .form-group textarea {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: var(--body-font);
+    font-size: 1rem;
+    background-color: #fff;
+}
+
+.modal-content .form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Steps Container */
+.steps-container {
+    border: 1px solid #e0e0e0;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.steps-container > label {
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 1rem;
+    display: block;
+    font-size: 1rem;
+}
+
+.step-row {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+    align-items: center;
+}
+
+.step-row input {
+    flex: 1;
+}
+
+.add-step-button {
+    background-color: #5c95f6;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 0.75rem;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.add-step-button:hover {
+    background-color: #4a86e8;
+}
+
+.remove-step-button {
+    background-color: #ff5252;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
     cursor: pointer;
 }
 
-#add-exercise-button:hover {
-    background-color: darkgreen;
+.remove-step-button:hover {
+    background-color: #ff3333;
+}
+
+/* Form Buttons */
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2.5rem;
+}
+
+.submit-exercise-button {
+    background: linear-gradient(to right, var(--first-color), var(--first-color-alt));
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(120, 200, 80, 0.3);
+}
+
+.submit-exercise-button:hover {
+    box-shadow: 0 4px 12px rgba(120, 200, 80, 0.4);
+}
+
+.cancel-button {
+    background-color: #eee;
+    color: #555;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.cancel-button:hover {
+    background-color: #e0e0e0;
+}
+
+/* Status message */
+.modal-content .status-message {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.modal-content .status-message.success {
+    background-color: #efffef;
+    color: #2e7d32;
+    border: 1px solid #a5d6a7;
+}
+
+.modal-content .status-message.error {
+    background-color: #ffeeee;
+    color: #c62828;
+    border: 1px solid #ef9a9a;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        padding: 1.5rem;
+    }
+
+    .form-buttons {
+        flex-direction: column-reverse;
+    }
+
+    .submit-exercise-button,
+    .cancel-button {
+        width: 100%;
+    }
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customize Your Plan - Gym Tracker</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 <header class="header" id="header">
@@ -12,7 +12,7 @@
         <nav class="nav">
             <div class="nav__logo">
                 <a href="index.html">
-                    <img src="resources/logo2.jpg" alt="logo">
+                    <img src="../resources/logo2.jpg" alt="logo">
                 </a>
             </div>
             <div class="nav__menu" id="nav-menu">
@@ -38,22 +38,46 @@
 <main class="main">
     <section class="customize-plan section">
         <div class="container">
-            <h1 class="section__title">Customize Your Plan</h1>
-            <form id="workoutPlanForm">
-                <div>
+            <h1 class="section__title">Create New Workout Plan</h1>
+            <div class="plan-instructions">
+                <p>Create your own custom workout plan by selecting exercises and specifying sets and reps.</p>
+            </div>
+
+            <form id="workoutPlanForm" class="plan-form">
+                <div class="form-group">
                     <label for="planName">Plan Name:</label>
-                    <input type="text" id="planName" name="planName" required>
+                    <input type="text" id="planName" name="planName" required placeholder="Enter a name for your workout plan">
                 </div>
-                <div id="exerciseList" class="exercise__list"></div>
-                <button type="button" id="addExerciseButton">Add Exercise</button>
-                <button type="submit">Save Plan</button>
+
+                <h3 class="exercises-heading">Add Exercises to Your Plan</h3>
+                <div id="exerciseList" class="exercise__list">
+                    <!-- Exercise rows will be added here -->
+                </div>
+
+                <div class="button-group">
+                    <button type="button" id="addExerciseButton" class="button add-exercise-button">
+                        <span class="button-icon">+</span> Add Exercise
+                    </button>
+                    <button type="submit" class="button save-plan-button">
+                        <span class="button-icon">✓</span> Save Plan
+                    </button>
+                </div>
             </form>
+
+            <!-- Link to view your existing plans -->
+            <div class="view-plans-link">
+                <a href="plans.html">View your existing workout plans</a>
+            </div>
         </div>
     </section>
 </main>
 
 <!-- Hidden dropdown template -->
-<select id="exerciseDropdown" style="display: none;"></select>
+<div id="exerciseDropdownTemplate" style="display: none;">
+    <select class="exercise-dropdown">
+        <option value="">Select Exercise</option>
+    </select>
+</div>
 
 <script src="../js/customize.js"></script>
 </body>

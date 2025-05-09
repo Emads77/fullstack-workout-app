@@ -19,16 +19,16 @@
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
                     <li class="nav__item">
-                        <a href="./index.html" class="nav__link">Home</a>
+                        <a href="index.html" class="nav__link">Home</a>
                     </li>
                     <li class="nav__item">
-                        <a href="./exercises.html" class="nav__link">Exercises</a>
+                        <a href="exercises.html" class="nav__link">Exercises</a>
                     </li>
                     <li class="nav__item">
-                        <a href="./customize.html" class="nav__link">Customise Your Plan</a>
+                        <a href="customize.html" class="nav__link">Customise Your Plan</a>
                     </li>
                     <li class="nav__item">
-                        <a href="./plans.html" class="nav__link">Plans For You</a>
+                        <a href="plans.html" class="nav__link">Plans For You</a>
                     </li>
                 </ul>
             </div>
@@ -39,16 +39,76 @@
 <main class="main">
     <section class="exercise-list section">
         <div class="ex__container">
-            <h1 class="ex__title">Exercise List</h1>
+            <h1 class="ex__title">Exercise Library</h1>
+
+            <!-- Add New Exercise Button -->
+            <div class="add-exercise-container">
+                <button id="addNewExerciseBtn" class="add-new-exercise-button">
+                    <span class="button-icon">+</span> Add New Exercise
+                </button>
+            </div>
+
+            <div class="exercise__filters">
+                <input type="text" id="searchExercise" placeholder="Search exercises...">
+                <select id="muscleGroupFilter">
+                    <option value="">All Muscle Groups</option>
+                    <!-- Muscle groups will be populated dynamically -->
+                </select>
+            </div>
+
             <div id="exerciseList" class="exercise__list"></div>
             <div id="exerciseDetails" class="exercise__details"></div>
-            <div id="ex__container_biceps" class="exercise__container"></div>
-            <div id="ex__container_triceps" class="exercise__container"></div>
-            <div id="ex__container_chest" class="exercise__container"></div>
-            <div id="ex__container_back" class="exercise__container"></div>
+
+            <!-- Container for muscle group exercises -->
+            <div id="muscleGroupContainers" class="muscle-group-containers">
+                <!-- These will be populated dynamically -->
+            </div>
         </div>
     </section>
 </main>
+
+<!-- Add Exercise Modal -->
+<div id="addExerciseModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Add New Exercise</h2>
+        <form id="addExerciseForm">
+            <div class="form-group">
+                <label for="exerciseName">Exercise Name</label>
+                <input type="text" id="exerciseName" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="exerciseMuscleGroup">Muscle Group</label>
+                <select id="exerciseMuscleGroup" name="muscle_group_id" required>
+                    <option value="">Select Muscle Group</option>
+                    <!-- Will be populated dynamically -->
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="exerciseDescription">Description</label>
+                <textarea id="exerciseDescription" name="description" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group steps-container">
+                <label>Steps</label>
+                <div id="exerciseSteps">
+                    <div class="step-row">
+                        <input type="text" name="steps[]" placeholder="Step 1" required>
+                        <button type="button" class="remove-step-button">Remove</button>
+                    </div>
+                </div>
+                <button type="button" id="addStepButton" class="add-step-button">Add Step</button>
+            </div>
+
+            <div class="form-buttons">
+                <button type="submit" class="submit-exercise-button">Save Exercise</button>
+                <button type="button" class="cancel-button">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
 
 <script src="../js/exercises.js"></script>
 </body>

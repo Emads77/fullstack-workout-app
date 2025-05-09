@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plans For You</title>
+    <title>Plans For You - Gym Tracker</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -18,16 +18,16 @@
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
                     <li class="nav__item">
-                        <a href="./index.html#home" class="nav__link">Home</a>
+                        <a href="index.html" class="nav__link">Home</a>
                     </li>
                     <li class="nav__item">
-                        <a href="./exercises.html" class="nav__link">Exercises</a>
+                        <a href="exercises.html" class="nav__link">Exercises</a>
                     </li>
                     <li class="nav__item">
-                        <a href="./customize.html" class="nav__link">Customise Your Plan</a>
+                        <a href="customize.html" class="nav__link">Customise Your Plan</a>
                     </li>
                     <li class="nav__item">
-                        <a href="./plans.html" class="nav__link">Plans For You</a>
+                        <a href="plans.html" class="nav__link">Plans For You</a>
                     </li>
                 </ul>
             </div>
@@ -38,8 +38,23 @@
 <main class="main">
     <section class="plans section">
         <div class="container">
-            <h1 class="plans__title">Your Plans</h1>
-            <div id="plansContainer" class="plans__container"></div>
+            <h1 class="plans__title">Your Workout Plans</h1>
+
+            <!-- Create New Plan Button -->
+            <div class="create-plan-container">
+                <a href="customize.html" class="create-plan-button">Create New Plan</a>
+            </div>
+
+            <div id="plansContainer" class="plans__container">
+                <!-- Plans will be loaded here dynamically -->
+                <div class="loading-message">Loading workout plans...</div>
+            </div>
+
+            <!-- No plans message (shown only when needed) -->
+            <div id="noPlansMessage" class="no-plans-message" style="display: none;">
+                You haven't created any workout plans yet.
+                <a href="customize.html">Create your first plan now</a>
+            </div>
         </div>
     </section>
 </main>
