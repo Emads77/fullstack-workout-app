@@ -1,6 +1,5 @@
 import * as muscleGroupQueries from '../database/queries/muscleGroupQueries.js';
 
-// In muscleGroupController.js
 const getAllMuscleGroups = async (req, res) => {
     try {
         const { search } = req.query;

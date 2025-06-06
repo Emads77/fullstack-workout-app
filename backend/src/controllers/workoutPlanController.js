@@ -1,10 +1,9 @@
-// src/controllers/workoutPlanController.js
 import * as wpQueries       from '../database/queries/workoutPlanQueries.js';
 import * as exerciseQueries from '../database/queries/exerciseQueries.js';
 
-//
+
 // GET /workout-plans
-//
+
 const listWorkoutPlans = async (req, res) => {
     try {
         const { search } = req.query;
@@ -34,9 +33,9 @@ const getWorkoutPlanById = async (req, res) => {
     }
 };
 
-//
+
 // GET /workout-plans/:planId/exercises
-//
+
 const listExercisesInPlan = async (req, res) => {
     try {
         const planId = parseInt(req.params.planId, 10);
@@ -53,9 +52,9 @@ const listExercisesInPlan = async (req, res) => {
     }
 };
 
-//
+
 // POST /workout-plans
-//
+
 const createWorkoutPlan = async (req, res) => {
     try {
         const { name } = req.body;
@@ -69,9 +68,9 @@ const createWorkoutPlan = async (req, res) => {
     }
 };
 
-//
+
 // PUT /workout-plans/:id
-//
+
 const updateWorkoutPlan = async (req, res) => {
     try {
         const id = parseInt(req.params.id, 10);
@@ -98,9 +97,9 @@ const updateWorkoutPlan = async (req, res) => {
     }
 };
 
-//
+
 // DELETE /workout-plans/:id
-//
+
 const deleteWorkoutPlan = async (req, res) => {
     try {
         const id = parseInt(req.params.id, 10);
@@ -121,9 +120,9 @@ const deleteWorkoutPlan = async (req, res) => {
     }
 };
 
-//
+
 // POST /workout-plans/:planId/exercises
-//
+
 const addExerciseToPlan = async (req, res) => {
     try {
         const planId     = parseInt(req.params.planId, 10);
@@ -149,9 +148,9 @@ const addExerciseToPlan = async (req, res) => {
     }
 };
 
-//
+
 // PUT /workout-plans/:planId/exercises/:wpeId
-//
+
 const updatePlanExercise = async (req, res) => {
     try {
         const planId = parseInt(req.params.planId, 10);
@@ -179,9 +178,9 @@ const updatePlanExercise = async (req, res) => {
     }
 };
 
-//
+
 // DELETE /workout-plans/:planId/exercises/:wpeId
-//
+
 const removeExerciseFromPlan = async (req, res) => {
     try {
         const planId = parseInt(req.params.planId, 10);

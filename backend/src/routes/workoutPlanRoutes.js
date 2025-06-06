@@ -1,4 +1,3 @@
-// src/routes/workoutPlanRoutes.js
 import express from 'express';
 import * as wpController from '../controllers/workoutPlanController.js';
 

@@ -27,7 +27,6 @@ async function init() {
         // Remove loading message
         loadingMessage.remove();
 
-        // Check if we should pre-select an exercise (from URL parameter)
         const urlParams = new URLSearchParams(window.location.search);
         const exerciseId = urlParams.get('exerciseId');
 
@@ -176,7 +175,6 @@ function addExerciseRow() {
     return row;
 }
 
-// Save the workout plan
 async function saveWorkoutPlan(event) {
     event.preventDefault();
 
@@ -192,7 +190,6 @@ async function saveWorkoutPlan(event) {
     statusDiv.textContent = 'Creating workout plan...';
     document.getElementById('workoutPlanForm').appendChild(statusDiv);
 
-    // Get form data
     const planName = document.getElementById('planName').value.trim();
     if (!planName) {
         statusDiv.textContent = 'Please enter a plan name.';
@@ -263,7 +260,6 @@ async function saveWorkoutPlan(event) {
         const planId = plan.id;
         console.log('Plan created with ID:', planId);
 
-        // Now add each exercise to the plan
         statusDiv.textContent = `Adding exercises to plan...`;
 
         for (let i = 0; i < exercises.length; i++) {
@@ -295,7 +291,6 @@ async function saveWorkoutPlan(event) {
         exerciseList.innerHTML = '';
         addExerciseRow(); // Add one empty row
 
-        // Offer to view plans or create another
         const actionsDiv = document.createElement('div');
         actionsDiv.className = 'post-create-actions';
 
@@ -314,7 +309,6 @@ async function saveWorkoutPlan(event) {
     }
 }
 
-// Show an error message to the user
 function showError(message) {
     // Remove any existing status messages
     const existingStatus = document.querySelector('.status-message');

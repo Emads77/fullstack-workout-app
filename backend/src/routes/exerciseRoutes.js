@@ -6,12 +6,11 @@ const router = express.Router();
 
 router.get('/', exerciseController.getAllExercises);
 router.get('/:id', exerciseController.getExerciseById);
-router.get('/:id/steps', exerciseController.getStepsByExerciseId);//to be deleted
+router.get('/:id/steps', exerciseController.getStepsByExerciseId);
 router.post('/', exerciseController.createExercise);
 router.put('/:id', exerciseController.updateExercise);
 router.delete('/:id', exerciseController.deleteExercise);
 
-// ── Steps endpoints scoped under an exercise ────────────────
 // router.get('/:exerciseId/steps',               exerciseController.getStepsByExerciseId);
 router.post('/:exerciseId/steps',              stepController.createStep);
 router.put('/:exerciseId/steps/:stepId',       stepController.updateStep);

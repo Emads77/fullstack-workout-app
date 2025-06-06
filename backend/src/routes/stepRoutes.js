@@ -1,4 +1,3 @@
-// src/routes/stepRoutes.js
 import express from 'express';
 import * as stepController from '../controllers/stepController.js';
 

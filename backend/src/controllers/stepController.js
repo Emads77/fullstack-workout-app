@@ -1,9 +1,8 @@
 import * as stepQueries     from '../database/queries/stepQueries.js';
 import * as exerciseQueries from '../database/queries/exerciseQueries.js';
 
-//
+
 // GET  /exercises/:exerciseId/steps
-//
 const listSteps = async (req, res) => {
     try {
         const exerciseId = parseInt(req.params.exerciseId, 10);
@@ -22,9 +21,9 @@ const listSteps = async (req, res) => {
     }
 };
 
-//
+
 // POST /exercises/:exerciseId/steps
-//
+
 const createStep = async (req, res) => {
     try {
         const exercise_id = parseInt(req.params.exerciseId, 10);
@@ -62,9 +61,9 @@ const createStep = async (req, res) => {
     }
 };
 
-//
+
 // PUT  /exercises/:exerciseId/steps/:stepId
-//
+
 const updateStep = async (req, res) => {
     try {
         const exerciseId = parseInt(req.params.exerciseId, 10);
@@ -123,9 +122,9 @@ const updateStep = async (req, res) => {
     }
 };
 
-//
+
 // DELETE /exercises/:exerciseId/steps/:stepId
-//
+
 const deleteStep = async (req, res) => {
     try {
         const exerciseId = parseInt(req.params.exerciseId, 10);

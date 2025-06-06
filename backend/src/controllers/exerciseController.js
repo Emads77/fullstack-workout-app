@@ -2,11 +2,7 @@ import * as exerciseQueries from '../database/queries/exerciseQueries.js';
 import * as muscleGroupQueries from '../database/queries/muscleGroupQueries.js';
 
 
-//http://localhost:3000/exercises?muscle_group_id=1
-//http://localhost:3000/exercises?search=curl
-//"http://localhost:3000/exercises?muscle_group_id=1&search=hammer"
-//muscle_group_id → only return exercises in that group
-// search → case-insensitive substring search on exercise name
+
 const getAllExercises = async (req, res) => {
     try {
         const { muscle_group_id, search } = req.query;
@@ -16,9 +12,7 @@ const getAllExercises = async (req, res) => {
 };
 
 
-//
-// GET /exercises/:id
-//
+
 const getExerciseById = async (req, res) => {
     try {
         const id = parseInt(req.params.id, 10);
@@ -40,9 +34,7 @@ const getExerciseById = async (req, res) => {
     }
 };
 
-//
-// GET /exercises/:id/steps
-//
+
 const getStepsByExerciseId = async (req, res) => {
     try {
         const exerciseId = parseInt(req.params.id, 10);
@@ -66,9 +58,7 @@ const getStepsByExerciseId = async (req, res) => {
     }
 };
 
-//
-// POST /exercises
-//
+
 const createExercise = async (req, res) => {
     try {
         const {name, muscle_group_id, description} = req.body;
@@ -109,9 +99,8 @@ const createExercise = async (req, res) => {
     }
 };
 
-//
-// PUT /exercises/:id
-//
+
+
 const updateExercise = async (req, res) => {
     try {
         const id = parseInt(req.params.id, 10);
@@ -167,9 +156,7 @@ const updateExercise = async (req, res) => {
     }
 };
 
-//
-// DELETE /exercises/:id
-//
+
 const deleteExercise = async (req, res) => {
     try {
         const id = parseInt(req.params.id, 10);
