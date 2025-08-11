@@ -7,7 +7,7 @@ import * as exerciseQueries from '../database/queries/exerciseQueries.js';
 const listWorkoutPlans = async (req, res) => {
     try {
         const { search } = req.query;
-        const plans = wpQueries.getAllWorkoutPlans({ search });
+        const plans = await wpQueries.getAllWorkoutPlans({ search });
         res.status(200).json(plans);
     } catch (err) {
         res.status(500).json({ error: 'Failed to retrieve workout plans', details: err.message });
@@ -23,7 +23,7 @@ const getWorkoutPlanById = async (req, res) => {
         if (isNaN(id)) {
             return res.status(400).json({ error: 'Invalid plan ID format' });
         }
-        const plan = wpQueries.getWorkoutPlanById(id);
+        const plan = await wpQueries.getWorkoutPlanById(id);
         if (!plan) {
             return res.status(404).json({ error: 'Workout plan not found' });
         }
@@ -45,7 +45,7 @@ const listExercisesInPlan = async (req, res) => {
         if (!wpQueries.workoutPlanExists(planId)) {
             return res.status(404).json({ error: 'Workout plan not found' });
         }
-        const items = wpQueries.getExercisesByPlanId(planId);
+        const items = await wpQueries.getExercisesByPlanId(planId);
         res.status(200).json(items);
     } catch (err) {
         res.status(500).json({ error: 'Failed to retrieve exercises for plan', details: err.message });
