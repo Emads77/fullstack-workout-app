@@ -6,7 +6,7 @@ import * as muscleGroupQueries from '../database/queries/muscleGroupQueries.js';
 const getAllExercises = async (req, res) => {
     try {
         const { muscle_group_id, search } = req.query;
-        const exercises = exerciseQueries.getAllExercises({ muscle_group_id, search });
+        const exercises = await exerciseQueries.getAllExercises({ muscle_group_id, search });
         res.json(exercises);
     } catch (err) { /* … */ }
 };

@@ -12,7 +12,7 @@ const listSteps = async (req, res) => {
         if (!(await exerciseQueries.exerciseExists(exerciseId))) {
             return res.status(404).json({ error: 'Exercise not found' });
         }
-        const steps = stepQueries.getStepsByExerciseId(exerciseId);
+        const steps = await stepQueries.getStepsByExerciseId(exerciseId);
         res.json(steps);
     } catch (err) {
         res

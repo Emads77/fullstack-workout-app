@@ -5,6 +5,8 @@ import routes from "./routes/routes.js";
 
 const app = express();
 const port = 3000;
+const host = "0.0.0.0";
+
 
 app.use(express.json());
 app.use(cors());
@@ -21,6 +23,6 @@ app.use((err, req, res, next) => {
         .json({message: err.message || 'Something went wrong!'});
 });
 
-app.listen(port, '0.0.0.0', () => {
-    console.log(`Server listening on port ${port}!`);
+app.listen(port, host, () => {
+    console.log(`Server listening on port ${port} and host ${host}`);
 });
