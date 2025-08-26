@@ -1,0 +1,7 @@
+# Ignore dependencies (if accidentally installed locally)
+node_modules
+npm-debug.log
+
+# Ignore build/config files not needed inside the image
+Dockerfile
+.dockerignore

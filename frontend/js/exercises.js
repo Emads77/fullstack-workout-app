@@ -15,7 +15,7 @@ document.getElementById('addExerciseForm').addEventListener('submit', saveNewExe
 // Close modal when clicking outside of it
 window.addEventListener('click', function(event) {
     const modal = document.getElementById('addExerciseModal');
-    if (event.target == modal) {
+    if (event.target === modal) {
         closeAddExerciseModal();
     }
 });
@@ -23,11 +23,14 @@ window.addEventListener('click', function(event) {
 // Keep track of all exercises and muscle groups for filtering
 let allExercises = [];
 let currentMuscleGroups = [];
+// const API_BASE_URL = 'http://localhost:3000';
+const API_BASE_URL = '/api';
+
 
 // Load all muscle groups from the API
 async function loadMuscleGroups() {
     try {
-        const response = await fetch('http://localhost:3000/muscle-groups');
+        const response = await fetch(`${API_BASE_URL}/muscle-groups`);
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -67,7 +70,7 @@ async function loadMuscleGroups() {
 // Load all exercises from the API
 async function loadAllExercises() {
     try {
-        const response = await fetch('http://localhost:3000/exercises');
+        const response = await fetch(`${API_BASE_URL}/exercises`);
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -146,14 +149,14 @@ function displayExercisesByMuscleGroup(exercises) {
 async function loadExerciseDetails(exerciseId) {
     try {
         // First fetch the exercise details
-        const exerciseResponse = await fetch(`http://localhost:3000/exercises/${exerciseId}`);
+        const exerciseResponse = await fetch(`${API_BASE_URL}/exercises/${exerciseId}`);
         if (!exerciseResponse.ok) {
             throw new Error(`HTTP error! Status: ${exerciseResponse.status}`);
         }
         const exercise = await exerciseResponse.json();
 
         // Then fetch the steps for this exercise
-        const stepsResponse = await fetch(`http://localhost:3000/exercises/${exerciseId}/steps`);
+        const stepsResponse = await fetch(`${API_BASE_URL}/exercises/${exerciseId}/steps`);
         if (!stepsResponse.ok) {
             throw new Error(`HTTP error! Status: ${stepsResponse.status}`);
         }
@@ -351,7 +354,7 @@ async function saveNewExercise(event) {
 
     try {
         // First create the exercise
-        const exerciseResponse = await fetch('http://localhost:3000/exercises', {
+        const exerciseResponse = await fetch(`${API_BASE_URL}/exercises`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -373,7 +376,7 @@ async function saveNewExercise(event) {
 
         // Then add each step
         for (let i = 0; i < steps.length; i++) {
-            const stepResponse = await fetch(`http://localhost:3000/exercises/${exerciseId}/steps`, {
+            const stepResponse = await fetch(`${API_BASE_URL}/exercises/${exerciseId}/steps`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -8,6 +8,8 @@ document.getElementById('workoutPlanForm').addEventListener('submit', saveWorkou
 // Global variables to store data
 let availableExercises = [];
 let loadedMuscleGroups = [];
+// const API_BASE_URL = 'http://localhost:3000';
+const API_BASE_URL = '/api';
 
 // Initialize the page
 async function init() {
@@ -48,7 +50,7 @@ async function init() {
 // Load all muscle groups from the API
 async function loadMuscleGroups() {
     try {
-        const response = await fetch('http://localhost:3000/muscle-groups');
+        const response = await fetch(`${API_BASE_URL}/muscle-groups`);
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -64,7 +66,7 @@ async function loadMuscleGroups() {
 // Load all exercises from the API
 async function loadExercises() {
     try {
-        const response = await fetch('http://localhost:3000/exercises');
+        const response = await fetch(`${API_BASE_URL}/exercises`);
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -237,7 +239,7 @@ async function saveWorkoutPlan(event) {
         statusDiv.textContent = 'Creating plan...';
         console.log('Creating plan with name:', planName);
 
-        const createPlanResponse = await fetch('http://localhost:3000/workout-plans', {
+        const createPlanResponse = await fetch(`${API_BASE_URL}/workout-plans`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -266,7 +268,7 @@ async function saveWorkoutPlan(event) {
             const exercise = exercises[i];
             console.log(`Adding exercise to plan: ${JSON.stringify(exercise)}`);
 
-            const addExerciseResponse = await fetch(`http://localhost:3000/workout-plans/${planId}/exercises`, {
+            const addExerciseResponse = await fetch(`${API_BASE_URL}/workout-plans/${planId}/exercises`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

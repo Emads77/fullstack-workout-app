@@ -1,6 +1,10 @@
 // Initialize the page
 loadWorkoutPlans();
 
+
+// const API_BASE_URL = 'http://localhost:3000';
+const API_BASE_URL = '/api';
+
 // Load all workout plans from the API
 async function loadWorkoutPlans() {
     try {
@@ -16,7 +20,7 @@ async function loadWorkoutPlans() {
             noPlansMessage.style.display = 'none';
         }
 
-        const response = await fetch('http://localhost:3000/workout-plans');
+        const response = await fetch(`${API_BASE_URL}/workout-plans`);
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -47,7 +51,7 @@ async function displayWorkoutPlans(plans) {
     plansContainer.innerHTML = ''; // Clear existing content
 
     if (plans.length === 0) {
-        plansContainer.innerHTML = '<div class="no-plans-message">You have no workout plans yet. <a href="customize.html">Create one now</a>.</div>';
+        plansContainer.innerHTML = '<div class="no-plans-message">You have no workout plans yet. <a href="../html/customize.html">Create one now</a>.</div>';
         return;
     }
 
@@ -82,7 +86,7 @@ async function displayWorkoutPlans(plans) {
 
         // Load exercises for this plan
         try {
-            const exercisesResponse = await fetch(`http://localhost:3000/workout-plans/${plan.id}/exercises`);
+            const exercisesResponse = await fetch(`${API_BASE_URL}/workout-plans/${plan.id}/exercises`);
             if (!exercisesResponse.ok) {
                 throw new Error(`HTTP error! Status: ${exercisesResponse.status}`);
             }
@@ -115,7 +119,7 @@ async function displayWorkoutPlans(plans) {
 
                     // Fetch exercise details
                     try {
-                        const exerciseResponse = await fetch(`http://localhost:3000/exercises/${planExercise.exerciseId}`);
+                        const exerciseResponse = await fetch(`${API_BASE_URL}/exercises/${planExercise.exerciseId}`);
                         if (!exerciseResponse.ok) {
                             throw new Error(`HTTP error! Status: ${exerciseResponse.status}`);
                         }
@@ -195,7 +199,7 @@ async function deletePlan(planId) {
     }
 
     try {
-        const response = await fetch(`http://localhost:3000/workout-plans/${planId}`, {
+        const response = await fetch(`${API_BASE_URL}/workout-plans/${planId}`, {
             method: 'DELETE'
         });
 
@@ -216,7 +220,7 @@ async function deletePlan(planId) {
                 noPlansMessage.style.display = 'block';
             } else {
                 document.getElementById('plansContainer').innerHTML =
-                    '<div class="no-plans-message">You have no workout plans yet. <a href="customize.html">Create one now</a>.</div>';
+                    '<div class="no-plans-message">You have no workout plans yet. <a href="../html/customize.html">Create one now</a>.</div>';
             }
         }
 
@@ -269,7 +273,7 @@ function editExercise(planId, exerciseId, currentSets, currentReps) {
 // Update an exercise in a workout plan
 async function updateExercise(planId, exerciseId, sets, reps) {
     try {
-        const response = await fetch(`http://localhost:3000/workout-plans/${planId}/exercises/${exerciseId}`, {
+        const response = await fetch(`${API_BASE_URL}/workout-plans/${planId}/exercises/${exerciseId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -318,7 +322,7 @@ async function removeExercise(planId, exerciseId) {
     }
 
     try {
-        const response = await fetch(`http://localhost:3000/workout-plans/${planId}/exercises/${exerciseId}`, {
+        const response = await fetch(`${API_BASE_URL}/workout-plans/${planId}/exercises/${exerciseId}`, {
             method: 'DELETE'
         });
 
